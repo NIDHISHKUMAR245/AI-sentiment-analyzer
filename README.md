@@ -1,19 +1,24 @@
-🤖 AI Sentiment Analyzer
+## 🤖 AI Sentiment Analyzer
 
 An advanced Natural Language Processing (NLP) project that leverages Machine Learning techniques to automatically classify textual data into Positive, Negative, or Neutral sentiments. This system is designed to extract meaningful insights from user-generated content such as reviews, feedback, and social media data.
 
-📌 Overview
+---
+## 📌 Overview
 
 Understanding customer sentiment is critical for businesses and decision-making. This project provides an intelligent solution to analyze textual opinions efficiently and accurately using data-driven approaches.
 
-✨ Key Features
+---
+## ✨ Key Features
+
 🔍 Automated sentiment classification (Positive / Negative / Neutral)
 🧠 Machine Learning-based prediction model
 🧹 Text preprocessing and normalization pipeline
 📊 Feature extraction using NLP techniques (TF-IDF / embeddings)
 ⚡ Real-time sentiment prediction
 💻 Scalable and modular architecture
-🛠️ Technology Stack
+
+---
+## 🛠️ Technology Stack
 Category	Tools / Libraries
 Language	Python
 Data Handling	Pandas, NumPy
@@ -21,7 +26,9 @@ NLP	NLTK / TextBlob / Transformers
 ML Models	Scikit-learn
 Interface	Streamlit / Flask (if applicable)
 Development	VS Code / Jupyter Notebook
-📂 Project Structure
+
+---
+## 📂 Project Structure
 AI-Sentiment-Analyzer/
 │── data/                  # Dataset files
 │── models/                # Saved trained models
@@ -30,7 +37,8 @@ AI-Sentiment-Analyzer/
 │── requirements.txt       # Project dependencies
 │── README.md              # Documentation
 
-⚙️ Installation & Setup
+---
+## ⚙️ Installation & Setup
 
 Follow these steps to run the project locally:
 
@@ -46,7 +54,8 @@ pip install -r requirements.txt
 4️⃣ Run the Application
 python app.py
 
-🧪 Methodology
+---
+## 🧪 Methodology
 
 The system follows a structured pipeline:
 
@@ -64,7 +73,8 @@ Input Text:
 Predicted Sentiment:
 ✅ Positive
 
-🚀 Future Enhancements
+---
+## 🚀 Future Enhancements
 Integration of Deep Learning models (LSTM, BERT)
 Real-time sentiment tracking from social media APIs
 Deployment as a web application or REST API
@@ -83,9 +93,9 @@ Submit a Pull Request
 
 This project is licensed under the MIT License.
 
-👤 Author
+---
+
+## 👤 Author
 
 Nidhish Kumar
-
-🔗 GitHub: https://github.com/your-username
-🔗 LinkedIn: (Add your LinkedIn profile)
+Email:nidhish781@gmail.com
