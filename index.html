@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ReviewSense — AI Review Intelligence</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">ReviewSense</div>
+  <div class="nav-links">
+    <button onclick="showPage('home')" class="active" id="nav-home"><span>Home</span> 🏠</button>
+    <button onclick="showPage('dashboard')" id="nav-dashboard"><span>Dashboard</span> 📊</button>
+    <button onclick="showPage('bulk')" id="nav-bulk"><span>Bulk</span> 📁</button>
+    <button onclick="showPage('voice')" id="nav-voice"><span>Voice</span> 🎤</button>
+    <button onclick="showPage('recommendations')" id="nav-recommendations"><span>Recs</span> 💡</button>
+  </div>
+  <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">🌙</button>
+</nav>
+
+<!-- HOME PAGE -->
+<div class="page active" id="page-home">
+
+  <!-- ═══ HERO ═══ -->
+  <section class="hp-hero">
+    <div class="hp-hero-bg">
+      <div class="hp-orb hp-orb1"></div>
+      <div class="hp-orb hp-orb2"></div>
+      <div class="hp-orb hp-orb3"></div>
+      <div class="hp-grid-lines"></div>
+    </div>
+    <div class="container hp-hero-inner">
+      <div class="hp-hero-left">
+        <div class="hp-badge" style="animation-delay:0s">
+          <span class="hp-badge-dot"></span> AI · NLP · Machine Learning
+        </div>
+        <h1 class="hp-h1" style="animation-delay:0.1s">
+          Turn Customer<br>
+          <span class="hp-gradient-text">Reviews Into</span><br>
+          Business Gold
+        </h1>
+        <p class="hp-lead" style="animation-delay:0.2s">
+          ReviewSense is an AI-powered platform that reads, understands, and acts on every customer review — so you never miss what your customers are really saying.
+        </p>
+        <div class="hp-hero-actions" style="animation-delay:0.3s">
+          <button class="btn btn-primary" onclick="scrollToAnalyzer()" style="padding:1rem 2.2rem;font-size:1rem;">
+            ✨ Try It Free — Analyze a Review
+          </button>
+          <button class="btn btn-ghost" onclick="showPage('dashboard')" style="padding:1rem 1.8rem;font-size:1rem;">
+            📊 View Dashboard
+          </button>
+        </div>
+        <div class="hp-trust-row" style="animation-delay:0.4s">
+          <div class="hp-trust-item"><span class="hp-trust-num">50K+</span><span class="hp-trust-label">Reviews Analyzed</span></div>
+          <div class="hp-trust-divider"></div>
+          <div class="hp-trust-item"><span class="hp-trust-num">98%</span><span class="hp-trust-label">Accuracy Rate</span></div>
+          <div class="hp-trust-divider"></div>
+          <div class="hp-trust-item"><span class="hp-trust-num">12</span><span class="hp-trust-label">AI Modules</span></div>
+        </div>
+      </div>
+      <div class="hp-hero-right" style="animation-delay:0.2s">
+        <!-- Illustrated Dashboard Preview SVG -->
+        <div class="hp-hero-visual">
+          <svg viewBox="0 0 480 360" xmlns="http://www.w3.org/2000/svg" class="hp-dashboard-svg">
+            <defs>
+              <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#00e5ff" stop-opacity="0.8"/>
+                <stop offset="100%" stop-color="#7c3aed" stop-opacity="0.8"/>
+              </linearGradient>
+              <linearGradient id="g2" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#10b981" stop-opacity="0.6"/>
+                <stop offset="100%" stop-color="#10b981" stop-opacity="0.05"/>
+              </linearGradient>
+              <linearGradient id="g3" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#00e5ff" stop-opacity="0.5"/>
+                <stop offset="100%" stop-color="#00e5ff" stop-opacity="0.02"/>
+              </linearGradient>
+              <filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            </defs>
+            <!-- Card background -->
+            <rect width="480" height="360" rx="20" fill="rgba(13,17,23,0.95)" stroke="rgba(0,229,255,0.15)" stroke-width="1"/>
+            <!-- Header bar -->
+            <rect x="0" y="0" width="480" height="44" rx="20" fill="rgba(22,27,38,0.9)"/>
+            <rect x="0" y="24" width="480" height="20" fill="rgba(22,27,38,0.9)"/>
+            <circle cx="20" cy="22" r="6" fill="#f43f5e" opacity="0.7"/>
+            <circle cx="38" cy="22" r="6" fill="#f59e0b" opacity="0.7"/>
+            <circle cx="56" cy="22" r="6" fill="#10b981" opacity="0.7"/>
+            <text x="240" y="27" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="10" font-family="monospace">ReviewSense — Analytics Dashboard</text>
+            <!-- Stat chips -->
+            <rect x="16" y="56" width="96" height="48" rx="10" fill="rgba(16,185,129,0.1)" stroke="rgba(16,185,129,0.25)" stroke-width="1"/>
+            <text x="64" y="77" text-anchor="middle" fill="#10b981" font-size="18" font-family="sans-serif" font-weight="bold">798</text>
+            <text x="64" y="92" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-size="8" font-family="sans-serif">POSITIVE</text>
+            <rect x="122" y="56" width="96" height="48" rx="10" fill="rgba(245,158,11,0.1)" stroke="rgba(245,158,11,0.25)" stroke-width="1"/>
+            <text x="170" y="77" text-anchor="middle" fill="#f59e0b" font-size="18" font-family="sans-serif" font-weight="bold">262</text>
+            <text x="170" y="92" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-size="8" font-family="sans-serif">NEUTRAL</text>
+            <rect x="228" y="56" width="96" height="48" rx="10" fill="rgba(244,63,94,0.1)" stroke="rgba(244,63,94,0.25)" stroke-width="1"/>
+            <text x="276" y="77" text-anchor="middle" fill="#f43f5e" font-size="18" font-family="sans-serif" font-weight="bold">187</text>
+            <text x="276" y="92" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-size="8" font-family="sans-serif">NEGATIVE</text>
+            <rect x="334" y="56" width="130" height="48" rx="10" fill="rgba(0,229,255,0.07)" stroke="rgba(0,229,255,0.2)" stroke-width="1"/>
+            <text x="399" y="77" text-anchor="middle" fill="#00e5ff" font-size="18" font-family="sans-serif" font-weight="bold">78%</text>
+            <text x="399" y="92" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-size="8" font-family="sans-serif">SATISFACTION</text>
+            <!-- Line chart area -->
+            <rect x="16" y="116" width="290" height="120" rx="10" fill="rgba(22,27,38,0.7)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+            <text x="28" y="131" fill="rgba(255,255,255,0.5)" font-size="8" font-family="sans-serif">SENTIMENT TREND</text>
+            <!-- Grid lines -->
+            <line x1="28" y1="148" x2="294" y2="148" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+            <line x1="28" y1="164" x2="294" y2="164" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+            <line x1="28" y1="180" x2="294" y2="180" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+            <line x1="28" y1="196" x2="294" y2="196" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+            <line x1="28" y1="212" x2="294" y2="212" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+            <!-- Positive trend line -->
+            <polyline points="36,202 68,194 100,197 132,186 164,182 196,175 228,169 260,162 292,155" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/>
+            <polygon points="36,202 68,194 100,197 132,186 164,182 196,175 228,169 260,162 292,155 292,222 36,222" fill="url(#g2)"/>
+            <!-- Negative trend line -->
+            <polyline points="36,218 68,213 100,216 132,210 164,206 196,211 228,204 260,199 292,194" fill="none" stroke="#f43f5e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+            <!-- Dots on positive line -->
+            <circle cx="292" cy="155" r="3.5" fill="#10b981" filter="url(#glow)"/>
+            <circle cx="228" cy="169" r="2.5" fill="#10b981" opacity="0.7"/>
+            <circle cx="164" cy="182" r="2.5" fill="#10b981" opacity="0.7"/>
+            <!-- Month labels -->
+            <text x="36" y="228" fill="rgba(255,255,255,0.25)" font-size="7" font-family="sans-serif">Jul</text>
+            <text x="100" y="228" fill="rgba(255,255,255,0.25)" font-size="7" font-family="sans-serif">Aug</text>
+            <text x="164" y="228" fill="rgba(255,255,255,0.25)" font-size="7" font-family="sans-serif">Sep</text>
+            <text x="228" y="228" fill="rgba(255,255,255,0.25)" font-size="7" font-family="sans-serif">Oct</text>
+            <text x="276" y="228" fill="rgba(255,255,255,0.25)" font-size="7" font-family="sans-serif">Nov</text>
+            <!-- Donut chart -->
+            <rect x="316" y="116" width="148" height="120" rx="10" fill="rgba(22,27,38,0.7)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+            <text x="328" y="131" fill="rgba(255,255,255,0.5)" font-size="8" font-family="sans-serif">DISTRIBUTION</text>
+            <circle cx="390" cy="178" r="34" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="16"/>
+            <circle cx="390" cy="178" r="34" fill="none" stroke="#10b981" stroke-width="16" stroke-dasharray="134 79" stroke-dashoffset="0" transform="rotate(-90 390 178)" opacity="0.85"/>
+            <circle cx="390" cy="178" r="34" fill="none" stroke="#f59e0b" stroke-width="16" stroke-dasharray="42 171" stroke-dashoffset="-134" transform="rotate(-90 390 178)" opacity="0.85"/>
+            <circle cx="390" cy="178" r="34" fill="none" stroke="#f43f5e" stroke-width="16" stroke-dasharray="30 183" stroke-dashoffset="-176" transform="rotate(-90 390 178)" opacity="0.85"/>
+            <circle cx="390" cy="178" r="22" fill="rgba(13,17,23,0.95)"/>
+            <text x="390" y="175" text-anchor="middle" fill="#00e5ff" font-size="11" font-weight="bold" font-family="sans-serif">64%</text>
+            <text x="390" y="186" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="7" font-family="sans-serif">positive</text>
+            <!-- Word cloud section -->
+            <rect x="16" y="248" width="448" height="96" rx="10" fill="rgba(22,27,38,0.7)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+            <text x="28" y="263" fill="rgba(255,255,255,0.5)" font-size="8" font-family="sans-serif">TOP KEYWORDS · WORD CLOUD</text>
+            <text x="55" y="292" fill="#00e5ff" font-size="20" font-weight="bold" font-family="sans-serif" opacity="0.9">quality</text>
+            <text x="170" y="285" fill="#f43f5e" font-size="15" font-weight="bold" font-family="sans-serif" opacity="0.85">delivery</text>
+            <text x="268" y="290" fill="#10b981" font-size="13" font-family="sans-serif" opacity="0.8">battery</text>
+            <text x="345" y="284" fill="#f59e0b" font-size="11" font-family="sans-serif" opacity="0.75">price</text>
+            <text x="400" y="292" fill="#7c3aed" font-size="12" font-family="sans-serif" opacity="0.8">service</text>
+            <text x="80" y="316" fill="#10b981" font-size="11" font-family="sans-serif" opacity="0.7">packaging</text>
+            <text x="175" y="318" fill="#00e5ff" font-size="9" font-family="sans-serif" opacity="0.65">camera</text>
+            <text x="240" y="315" fill="rgba(255,255,255,0.45)" font-size="12" font-family="sans-serif">support</text>
+            <text x="320" y="318" fill="#f43f5e" font-size="9" font-family="sans-serif" opacity="0.7">screen</text>
+            <text x="375" y="315" fill="rgba(255,255,255,0.4)" font-size="8" font-family="sans-serif">fast</text>
+            <text x="410" y="320" fill="#10b981" font-size="10" font-family="sans-serif" opacity="0.6">value</text>
+          </svg>
+          <!-- Floating annotation cards -->
+          <div class="hp-float-card hp-float-1">
+            <span class="hp-float-icon">😊</span>
+            <div><div class="hp-float-label">Sentiment</div><div class="hp-float-val" style="color:var(--pos)">Positive · 94%</div></div>
+          </div>
+          <div class="hp-float-card hp-float-2">
+            <span class="hp-float-icon">🎯</span>
+            <div><div class="hp-float-label">Aspect Found</div><div class="hp-float-val" style="color:var(--accent)">Battery → Positive</div></div>
+          </div>
+          <div class="hp-float-card hp-float-3">
+            <span class="hp-float-icon">💡</span>
+            <div><div class="hp-float-label">AI Insight</div><div class="hp-float-val" style="color:var(--neu)">Improve delivery SLA</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ WHAT IS REVIEWSENSE ═══ -->
+  <section class="hp-section" style="background:var(--surface2);">
+    <div class="container">
+      <div class="hp-section-label reveal">What is ReviewSense?</div>
+      <div class="hp-section-title reveal">Your Business Doesn't Have Time<br>to Read Every Review. <span class="hp-gradient-text">We Do.</span></div>
+      <div class="hp-section-sub reveal">Every day, customers leave hundreds of reviews about your products. Most businesses miss the patterns. ReviewSense reads them all — in seconds — and tells you exactly what to do next.</div>
+
+      <div class="hp-purpose-grid reveal">
+        <div class="hp-purpose-card">
+          <div class="hp-purpose-visual">
+            <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg">
+              <rect width="200" height="140" rx="12" fill="rgba(0,229,255,0.04)"/>
+              <!-- Review bubbles -->
+              <rect x="12" y="16" width="110" height="30" rx="8" fill="rgba(16,185,129,0.15)" stroke="rgba(16,185,129,0.3)" stroke-width="1"/>
+              <text x="22" y="28" fill="#10b981" font-size="8" font-family="sans-serif">★★★★★  "Amazing quality!"</text>
+              <text x="22" y="40" fill="rgba(255,255,255,0.4)" font-size="7" font-family="sans-serif">Product · 2 hours ago</text>
+              <rect x="12" y="54" width="130" height="30" rx="8" fill="rgba(244,63,94,0.12)" stroke="rgba(244,63,94,0.25)" stroke-width="1"/>
+              <text x="22" y="66" fill="#f43f5e" font-size="8" font-family="sans-serif">★★☆☆☆  "Delivery was so slow"</text>
+              <text x="22" y="78" fill="rgba(255,255,255,0.4)" font-size="7" font-family="sans-serif">Logistics · 5 hours ago</text>
+              <rect x="12" y="92" width="120" height="30" rx="8" fill="rgba(245,158,11,0.12)" stroke="rgba(245,158,11,0.25)" stroke-width="1"/>
+              <text x="22" y="104" fill="#f59e0b" font-size="8" font-family="sans-serif">★★★☆☆  "Okay for the price"</text>
+              <text x="22" y="116" fill="rgba(255,255,255,0.4)" font-size="7" font-family="sans-serif">Value · 1 day ago</text>
+              <!-- Arrow -->
+              <text x="152" y="75" fill="rgba(0,229,255,0.6)" font-size="22">→</text>
+              <!-- AI brain icon -->
+              <circle cx="182" cy="70" r="14" fill="rgba(0,229,255,0.1)" stroke="rgba(0,229,255,0.3)" stroke-width="1.5"/>
+              <text x="182" y="75" text-anchor="middle" fill="#00e5ff" font-size="14">🧠</text>
+            </svg>
+          </div>
+          <div class="hp-purpose-label">The Problem</div>
+          <div class="hp-purpose-title">Hundreds of reviews. Zero time.</div>
+          <div class="hp-purpose-desc">Businesses receive thousands of reviews across Amazon, Google, Flipkart and more. Reading them manually is impossible — and patterns get missed.</div>
+        </div>
+
+        <div class="hp-purpose-card hp-purpose-card-accent">
+          <div class="hp-purpose-visual">
+            <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg">
+              <rect width="200" height="140" rx="12" fill="rgba(0,229,255,0.05)"/>
+              <!-- NLP pipeline -->
+              <rect x="10" y="20" width="50" height="28" rx="7" fill="rgba(0,229,255,0.1)" stroke="rgba(0,229,255,0.3)" stroke-width="1"/>
+              <text x="35" y="31" text-anchor="middle" fill="#00e5ff" font-size="8" font-family="sans-serif">Review</text>
+              <text x="35" y="42" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="7" font-family="sans-serif">Input</text>
+              <line x1="60" y1="34" x2="75" y2="34" stroke="rgba(0,229,255,0.5)" stroke-width="1.5" marker-end="url(#arr)"/>
+              <rect x="75" y="20" width="50" height="28" rx="7" fill="rgba(124,58,237,0.15)" stroke="rgba(124,58,237,0.35)" stroke-width="1"/>
+              <text x="100" y="31" text-anchor="middle" fill="#a78bfa" font-size="8" font-family="sans-serif">NLP</text>
+              <text x="100" y="42" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="7" font-family="sans-serif">Engine</text>
+              <line x1="125" y1="34" x2="140" y2="34" stroke="rgba(124,58,237,0.5)" stroke-width="1.5"/>
+              <rect x="140" y="20" width="50" height="28" rx="7" fill="rgba(16,185,129,0.12)" stroke="rgba(16,185,129,0.3)" stroke-width="1"/>
+              <text x="165" y="31" text-anchor="middle" fill="#10b981" font-size="8" font-family="sans-serif">Insight</text>
+              <text x="165" y="42" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="7" font-family="sans-serif">Output</text>
+              <!-- Output rows -->
+              <rect x="14" y="62" width="172" height="18" rx="5" fill="rgba(16,185,129,0.1)" stroke="rgba(16,185,129,0.2)" stroke-width="1"/>
+              <circle cx="24" cy="71" r="4" fill="#10b981"/>
+              <text x="32" y="75" fill="rgba(255,255,255,0.7)" font-size="8" font-family="sans-serif">Sentiment: Positive · Confidence 91%</text>
+              <rect x="14" y="84" width="172" height="18" rx="5" fill="rgba(245,158,11,0.1)" stroke="rgba(245,158,11,0.2)" stroke-width="1"/>
+              <circle cx="24" cy="93" r="4" fill="#f59e0b"/>
+              <text x="32" y="97" fill="rgba(255,255,255,0.7)" font-size="8" font-family="sans-serif">Aspect: Delivery → Negative</text>
+              <rect x="14" y="106" width="172" height="18" rx="5" fill="rgba(0,229,255,0.08)" stroke="rgba(0,229,255,0.2)" stroke-width="1"/>
+              <circle cx="24" cy="115" r="4" fill="#00e5ff"/>
+              <text x="32" y="119" fill="rgba(255,255,255,0.7)" font-size="8" font-family="sans-serif">Emotion: Frustrated · Keywords: 8 found</text>
+            </svg>
+          </div>
+          <div class="hp-purpose-label" style="color:var(--accent)">The Solution</div>
+          <div class="hp-purpose-title">AI reads every review instantly</div>
+          <div class="hp-purpose-desc">Our NLP engine processes reviews in milliseconds — detecting sentiment, emotions, aspects, fake reviews and actionable keywords automatically.</div>
+        </div>
+
+        <div class="hp-purpose-card">
+          <div class="hp-purpose-visual">
+            <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg">
+              <rect width="200" height="140" rx="12" fill="rgba(16,185,129,0.03)"/>
+              <!-- Growth chart -->
+              <rect x="12" y="16" width="176" height="80" rx="8" fill="rgba(22,27,38,0.8)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+              <polyline points="24,82 52,72 80,68 108,58 136,50 164,40 180,35" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round"/>
+              <polygon points="24,82 52,72 80,68 108,58 136,50 164,40 180,35 180,90 24,90" fill="rgba(16,185,129,0.12)"/>
+              <circle cx="180" cy="35" r="4" fill="#10b981"/>
+              <text x="168" y="30" fill="#10b981" font-size="8" font-family="sans-serif">+22%</text>
+              <!-- CX score -->
+              <rect x="12" y="104" width="84" height="28" rx="8" fill="rgba(0,229,255,0.08)" stroke="rgba(0,229,255,0.2)" stroke-width="1"/>
+              <text x="54" y="116" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="7" font-family="sans-serif">CX SCORE</text>
+              <text x="54" y="127" text-anchor="middle" fill="#00e5ff" font-size="12" font-weight="bold" font-family="sans-serif">78 → 90+</text>
+              <rect x="104" y="104" width="84" height="28" rx="8" fill="rgba(16,185,129,0.08)" stroke="rgba(16,185,129,0.2)" stroke-width="1"/>
+              <text x="146" y="116" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="7" font-family="sans-serif">SATISFACTION</text>
+              <text x="146" y="127" text-anchor="middle" fill="#10b981" font-size="12" font-weight="bold" font-family="sans-serif">↑ 2 Quarters</text>
+            </svg>
+          </div>
+          <div class="hp-purpose-label">The Outcome</div>
+          <div class="hp-purpose-title">Data-driven decisions that grow revenue</div>
+          <div class="hp-purpose-desc">With clear insights and prioritized recommendations, you fix the right problems first — improving satisfaction scores and customer retention.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ HOW IT WORKS ═══ -->
+  <section class="hp-section">
+    <div class="container">
+      <div class="hp-section-label reveal">How It Works</div>
+      <div class="hp-section-title reveal">From Raw Review to<br><span class="hp-gradient-text">Actionable Insight</span> in 3 Steps</div>
+
+      <div class="hp-steps reveal">
+        <div class="hp-step">
+          <div class="hp-step-num">01</div>
+          <div class="hp-step-visual">
+            <svg viewBox="0 0 240 160" xmlns="http://www.w3.org/2000/svg">
+              <rect width="240" height="160" rx="14" fill="rgba(13,17,23,0.9)" stroke="rgba(0,229,255,0.12)" stroke-width="1"/>
+              <!-- Text input mockup -->
+              <rect x="14" y="16" width="212" height="88" rx="8" fill="rgba(22,27,38,0.9)" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+              <text x="26" y="34" fill="rgba(255,255,255,0.25)" font-size="8" font-family="sans-serif">Paste your customer review...</text>
+              <text x="26" y="50" fill="rgba(255,255,255,0.7)" font-size="9" font-family="sans-serif">"The battery life is excellent and the</text>
+              <text x="26" y="63" fill="rgba(255,255,255,0.7)" font-size="9" font-family="sans-serif">build quality is solid. However, the</text>
+              <text x="26" y="76" fill="rgba(255,255,255,0.7)" font-size="9" font-family="sans-serif">camera is disappointing in low light..."</text>
+              <!-- Cursor blink -->
+              <rect x="26" y="83" width="2" height="10" fill="#00e5ff" opacity="0.8"/>
+              <!-- Analyze button -->
+              <rect x="14" y="116" width="100" height="30" rx="8" fill="url(#g1)" opacity="0.9"/>
+              <text x="64" y="135" text-anchor="middle" fill="white" font-size="10" font-weight="bold" font-family="sans-serif">✨ Analyze</text>
+              <!-- Platform icons -->
+              <rect x="124" y="116" width="30" height="30" rx="7" fill="rgba(22,27,38,0.9)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+              <text x="139" y="135" text-anchor="middle" font-size="14">🛒</text>
+              <rect x="160" y="116" width="30" height="30" rx="7" fill="rgba(22,27,38,0.9)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+              <text x="175" y="135" text-anchor="middle" font-size="14">⭐</text>
+              <rect x="196" y="116" width="30" height="30" rx="7" fill="rgba(22,27,38,0.9)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+              <text x="211" y="135" text-anchor="middle" font-size="14">🎤</text>
+            </svg>
+          </div>
+          <div class="hp-step-title">Input Your Review</div>
+          <div class="hp-step-desc">Paste text, upload a CSV, speak via voice, or fetch directly from Amazon, Flipkart, Google, or Twitter/X with one click.</div>
+        </div>
+
+        <div class="hp-step-arrow">→</div>
+
+        <div class="hp-step">
+          <div class="hp-step-num">02</div>
+          <div class="hp-step-visual">
+            <svg viewBox="0 0 240 160" xmlns="http://www.w3.org/2000/svg">
+              <rect width="240" height="160" rx="14" fill="rgba(13,17,23,0.9)" stroke="rgba(124,58,237,0.15)" stroke-width="1"/>
+              <!-- NLP processing animation -->
+              <circle cx="120" cy="72" r="40" fill="rgba(124,58,237,0.08)" stroke="rgba(124,58,237,0.25)" stroke-width="1.5"/>
+              <circle cx="120" cy="72" r="28" fill="rgba(0,229,255,0.06)" stroke="rgba(0,229,255,0.2)" stroke-width="1"/>
+              <text x="120" y="77" text-anchor="middle" fill="#00e5ff" font-size="22">🧠</text>
+              <!-- Orbiting tags -->
+              <rect x="8" y="30" width="55" height="18" rx="5" fill="rgba(16,185,129,0.15)" stroke="rgba(16,185,129,0.3)" stroke-width="1"/>
+              <text x="35" y="42" text-anchor="middle" fill="#10b981" font-size="8" font-family="sans-serif">Tokenizing</text>
+              <rect x="178" y="30" width="55" height="18" rx="5" fill="rgba(245,158,11,0.12)" stroke="rgba(245,158,11,0.3)" stroke-width="1"/>
+              <text x="205" y="42" text-anchor="middle" fill="#f59e0b" font-size="8" font-family="sans-serif">Classifying</text>
+              <rect x="8" y="96" width="55" height="18" rx="5" fill="rgba(0,229,255,0.1)" stroke="rgba(0,229,255,0.2)" stroke-width="1"/>
+              <text x="35" y="108" text-anchor="middle" fill="#00e5ff" font-size="8" font-family="sans-serif">Vectorizing</text>
+              <rect x="178" y="96" width="55" height="18" rx="5" fill="rgba(244,63,94,0.1)" stroke="rgba(244,63,94,0.2)" stroke-width="1"/>
+              <text x="205" y="108" text-anchor="middle" fill="#f43f5e" font-size="8" font-family="sans-serif">Scoring</text>
+              <!-- Lines from center to tags -->
+              <line x1="84" y1="60" x2="63" y2="47" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+              <line x1="156" y1="60" x2="178" y2="47" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+              <line x1="84" y1="85" x2="63" y2="102" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+              <line x1="156" y1="85" x2="178" y2="102" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+              <!-- Libraries label -->
+              <text x="120" y="134" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-size="8" font-family="sans-serif">TextBlob · NLTK · Scikit-learn · spaCy</text>
+              <text x="120" y="148" text-anchor="middle" fill="rgba(255,255,255,0.2)" font-size="7" font-family="monospace">Processing in 0.3s...</text>
+            </svg>
+          </div>
+          <div class="hp-step-title">AI Processes the Text</div>
+          <div class="hp-step-desc">Our NLP pipeline runs sentiment scoring, aspect extraction, emotion detection, fake review detection, and keyword analysis simultaneously.</div>
+        </div>
+
+        <div class="hp-step-arrow">→</div>
+
+        <div class="hp-step">
+          <div class="hp-step-num">03</div>
+          <div class="hp-step-visual">
+            <svg viewBox="0 0 240 160" xmlns="http://www.w3.org/2000/svg">
+              <rect width="240" height="160" rx="14" fill="rgba(13,17,23,0.9)" stroke="rgba(16,185,129,0.12)" stroke-width="1"/>
+              <!-- Result rows -->
+              <rect x="12" y="14" width="216" height="24" rx="6" fill="rgba(16,185,129,0.12)" stroke="rgba(16,185,129,0.25)" stroke-width="1"/>
+              <circle cx="24" cy="26" r="5" fill="#10b981"/>
+              <text x="34" y="30" fill="rgba(255,255,255,0.8)" font-size="9" font-family="sans-serif">Sentiment: Positive  ·  Confidence: 91%</text>
+              <rect x="12" y="44" width="216" height="24" rx="6" fill="rgba(244,63,94,0.1)" stroke="rgba(244,63,94,0.2)" stroke-width="1"/>
+              <circle cx="24" cy="56" r="5" fill="#f43f5e"/>
+              <text x="34" y="60" fill="rgba(255,255,255,0.8)" font-size="9" font-family="sans-serif">Camera → Negative  ·  Battery → Positive</text>
+              <rect x="12" y="74" width="216" height="24" rx="6" fill="rgba(0,229,255,0.07)" stroke="rgba(0,229,255,0.18)" stroke-width="1"/>
+              <circle cx="24" cy="86" r="5" fill="#00e5ff"/>
+              <text x="34" y="90" fill="rgba(255,255,255,0.8)" font-size="9" font-family="sans-serif">Emotion: Satisfied  ·  Keywords: 6 found</text>
+              <!-- Recommendation box -->
+              <rect x="12" y="104" width="216" height="46" rx="8" fill="rgba(124,58,237,0.1)" stroke="rgba(124,58,237,0.25)" stroke-width="1"/>
+              <text x="24" y="118" fill="#a78bfa" font-size="8" font-weight="bold" font-family="sans-serif">💡 RECOMMENDATION</text>
+              <text x="24" y="131" fill="rgba(255,255,255,0.65)" font-size="8" font-family="sans-serif">Improve camera firmware in next release.</text>
+              <text x="24" y="143" fill="rgba(255,255,255,0.65)" font-size="8" font-family="sans-serif">Highlight battery life in marketing copy.</text>
+            </svg>
+          </div>
+          <div class="hp-step-title">Get Insights & Act</div>
+          <div class="hp-step-desc">Receive a full breakdown — sentiment score, aspect analysis, emotion profile, and AI-generated business recommendations with clear next steps.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FEATURES GRID ═══ -->
+  <section class="hp-section" style="background:var(--surface2);">
+    <div class="container">
+      <div class="hp-section-label reveal">Core Features</div>
+      <div class="hp-section-title reveal">Everything You Need to<br><span class="hp-gradient-text">Master Customer Feedback</span></div>
+
+      <div class="hp-features-grid reveal">
+        <div class="hp-feat-card hp-feat-large">
+          <div class="hp-feat-icon-wrap" style="background:rgba(0,229,255,0.1);border-color:rgba(0,229,255,0.2);">🔍</div>
+          <div class="hp-feat-title">Sentiment Analyzer</div>
+          <div class="hp-feat-desc">Classify any review as Positive, Neutral, or Negative with confidence scores, keyword extraction, and emotion detection in real time.</div>
+          <div class="hp-feat-illustration">
+            <svg viewBox="0 0 260 100" xmlns="http://www.w3.org/2000/svg">
+              <rect x="0" y="10" width="80" height="80" rx="10" fill="rgba(16,185,129,0.1)" stroke="rgba(16,185,129,0.25)" stroke-width="1"/>
+              <text x="40" y="45" text-anchor="middle" font-size="24">😊</text>
+              <text x="40" y="62" text-anchor="middle" fill="#10b981" font-size="9" font-family="sans-serif" font-weight="bold">POSITIVE</text>
+              <text x="40" y="75" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="8" font-family="sans-serif">94% conf.</text>
+              <rect x="90" y="10" width="80" height="80" rx="10" fill="rgba(245,158,11,0.1)" stroke="rgba(245,158,11,0.25)" stroke-width="1"/>
+              <text x="130" y="45" text-anchor="middle" font-size="24">😐</text>
+              <text x="130" y="62" text-anchor="middle" fill="#f59e0b" font-size="9" font-family="sans-serif" font-weight="bold">NEUTRAL</text>
+              <text x="130" y="75" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="8" font-family="sans-serif">71% conf.</text>
+              <rect x="180" y="10" width="80" height="80" rx="10" fill="rgba(244,63,94,0.1)" stroke="rgba(244,63,94,0.25)" stroke-width="1"/>
+              <text x="220" y="45" text-anchor="middle" font-size="24">😠</text>
+              <text x="220" y="62" text-anchor="middle" fill="#f43f5e" font-size="9" font-family="sans-serif" font-weight="bold">NEGATIVE</text>
+              <text x="220" y="75" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="8" font-family="sans-serif">88% conf.</text>
+            </svg>
+          </div>
+          <button class="btn btn-primary" onclick="scrollToAnalyzer()" style="margin-top:1rem;padding:0.7rem 1.5rem;">Try Analyzer →</button>
+        </div>
+
+        <div class="hp-feat-card">
+          <div class="hp-feat-icon-wrap" style="background:rgba(124,58,237,0.1);border-color:rgba(124,58,237,0.25);">🎯</div>
+          <div class="hp-feat-title">Aspect-Based Analysis</div>
+          <div class="hp-feat-desc">Detects sentiment for specific product dimensions — battery, camera, delivery, support — not just the overall review.</div>
+          <div class="hp-feat-tags">
+            <span style="color:var(--pos)">Battery ✓</span>
+            <span style="color:var(--neg)">Camera ✗</span>
+            <span style="color:var(--pos)">Service ✓</span>
+            <span style="color:var(--neg)">Delivery ✗</span>
+          </div>
+        </div>
+
+        <div class="hp-feat-card">
+          <div class="hp-feat-icon-wrap" style="background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.25);">📊</div>
+          <div class="hp-feat-title">Live Analytics Dashboard</div>
+          <div class="hp-feat-desc">Pie, bar, line, and word-frequency charts auto-generated from your review data — with hover effects and animations.</div>
+          <button class="btn btn-ghost" onclick="showPage('dashboard')" style="margin-top:auto;padding:0.55rem 1.2rem;font-size:0.82rem;">View Dashboard →</button>
+        </div>
+
+        <div class="hp-feat-card">
+          <div class="hp-feat-icon-wrap" style="background:rgba(245,158,11,0.1);border-color:rgba(245,158,11,0.25);">⚠️</div>
+          <div class="hp-feat-title">Fake Review Detector</div>
+          <div class="hp-feat-desc">Flags suspicious reviews using pattern analysis — repetition, unnatural language, excessive superlatives — with a confidence score.</div>
+          <div class="hp-feat-tags">
+            <span style="color:var(--neg);border-color:rgba(244,63,94,0.3)">Repetitive phrases</span>
+            <span style="color:var(--neg);border-color:rgba(244,63,94,0.3)">Spam detected</span>
+          </div>
+        </div>
+
+        <div class="hp-feat-card">
+          <div class="hp-feat-icon-wrap" style="background:rgba(0,229,255,0.1);border-color:rgba(0,229,255,0.2);">🎤</div>
+          <div class="hp-feat-title">Voice Review Analyzer</div>
+          <div class="hp-feat-desc">Speak your review directly into the browser. Speech-to-text converts it instantly and sends it through the full NLP pipeline.</div>
+          <button class="btn btn-ghost" onclick="showPage('voice')" style="margin-top:auto;padding:0.55rem 1.2rem;font-size:0.82rem;">Try Voice →</button>
+        </div>
+
+        <div class="hp-feat-card">
+          <div class="hp-feat-icon-wrap" style="background:rgba(244,63,94,0.1);border-color:rgba(244,63,94,0.25);">💡</div>
+          <div class="hp-feat-title">Recommendation Engine</div>
+          <div class="hp-feat-desc">10 AI-generated, prioritized action plans based on review patterns — with impact scores, timelines and concrete next steps.</div>
+          <button class="btn btn-ghost" onclick="showPage('recommendations')" style="margin-top:auto;padding:0.55rem 1.2rem;font-size:0.82rem;">See Recs →</button>
+        </div>
+
+        <div class="hp-feat-card">
+          <div class="hp-feat-icon-wrap" style="background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.25);">📁</div>
+          <div class="hp-feat-title">Bulk CSV Analysis</div>
+          <div class="hp-feat-desc">Upload thousands of reviews at once. Get summary stats, auto-generated charts, and per-review sentiment labels in seconds.</div>
+          <button class="btn btn-ghost" onclick="showPage('bulk')" style="margin-top:auto;padding:0.55rem 1.2rem;font-size:0.82rem;">Try Bulk →</button>
+        </div>
+
+        <div class="hp-feat-card">
+          <div class="hp-feat-icon-wrap" style="background:rgba(124,58,237,0.1);border-color:rgba(124,58,237,0.25);">🔮</div>
+          <div class="hp-feat-title">Sentiment Trend Prediction</div>
+          <div class="hp-feat-desc">ML-powered forecasting predicts next month's sentiment trajectory based on historical patterns, displayed as animated trend charts.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ LIVE ANALYZER ═══ -->
+  <section class="hp-section" id="analyzer-section">
+    <div class="container">
+      <div class="hp-section-label reveal">Try It Now</div>
+      <div class="hp-section-title reveal">Analyze a Review<br><span class="hp-gradient-text">Right Here, Right Now</span></div>
+      <div class="hp-section-sub reveal">No signup required. Paste any customer review below and see the full AI analysis in under 2 seconds.</div>
+
+      <div class="hp-analyzer-wrap reveal">
+        <!-- PLATFORMS -->
+        <div class="card" style="margin-bottom:1.5rem;">
+          <div class="card-title"><span class="card-icon">🌐</span> Fetch Reviews From Platform</div>
+          <div class="platform-grid">
+            <div class="platform-card" onclick="loadPlatformReview('amazon')"><span class="platform-icon">🛒</span><div class="platform-name">Amazon</div></div>
+            <div class="platform-card" onclick="loadPlatformReview('flipkart')"><span class="platform-icon">🏪</span><div class="platform-name">Flipkart</div></div>
+            <div class="platform-card" onclick="loadPlatformReview('twitter')"><span class="platform-icon">🐦</span><div class="platform-name">Twitter/X</div></div>
+            <div class="platform-card" onclick="loadPlatformReview('google')"><span class="platform-icon">⭐</span><div class="platform-name">Google Reviews</div></div>
+          </div>
+          <div style="margin-top:1rem;display:flex;gap:0.75rem;">
+            <input type="text" id="url-input" placeholder="Or paste a product/business URL..." style="flex:1;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:0.7rem 1rem;color:var(--text);font-family:'DM Sans',sans-serif;outline:none;">
+            <button class="btn btn-ghost" onclick="fetchFromURL()">Fetch</button>
+          </div>
+        </div>
+        <!-- ANALYZER -->
+        <div class="card">
+          <div class="card-title"><span class="card-icon">🔍</span> Sentiment Analyzer</div>
+          <textarea id="review-input" placeholder="Paste a customer review here to analyze sentiment, extract keywords, detect emotions, and identify aspects..."></textarea>
+          <div class="examples">
+            <span style="font-size:0.78rem;color:var(--muted);align-self:center;">Try:</span>
+            <button class="example-pill" onclick="setExample(0)">Product quality review</button>
+            <button class="example-pill" onclick="setExample(1)">Delivery complaint</button>
+            <button class="example-pill" onclick="setExample(2)">Mixed feedback</button>
+            <button class="example-pill" onclick="setExample(3)">Fake/spam review</button>
+          </div>
+          <div class="analyze-controls">
+            <button class="btn btn-primary" onclick="analyzeReview()">✨ Analyze Sentiment</button>
+            <button class="btn btn-ghost" onclick="clearAll()">Clear</button>
+          </div>
+          <div class="loading-bar" id="loading-bar"></div>
+          <div id="results" style="display:none;">
+            <div class="results-grid" id="results-grid"></div>
+            <div style="margin-top:1.5rem;">
+              <div class="tabs">
+                <button class="tab active" onclick="switchTab(this,'tab-aspects')">Aspect Analysis</button>
+                <button class="tab" onclick="switchTab(this,'tab-emotions')">Emotions</button>
+                <button class="tab" onclick="switchTab(this,'tab-fake')">Fake Detection</button>
+                <button class="tab" onclick="switchTab(this,'tab-recs')">💡 Recommendations</button>
+              </div>
+              <div id="tab-aspects"></div>
+              <div id="tab-emotions" style="display:none;"></div>
+              <div id="tab-fake" style="display:none;"></div>
+              <div id="tab-recs" style="display:none;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ WHO IS IT FOR ═══ -->
+  <section class="hp-section" style="background:var(--surface2);">
+    <div class="container">
+      <div class="hp-section-label reveal">Who It's For</div>
+      <div class="hp-section-title reveal">Built for Every Team That<br><span class="hp-gradient-text">Cares About Customers</span></div>
+      <div class="hp-audience-grid reveal">
+        <div class="hp-audience-card">
+          <div class="hp-audience-icon">🛍️</div>
+          <div class="hp-audience-title">E-Commerce Brands</div>
+          <div class="hp-audience-desc">Monitor product reviews across Amazon, Flipkart, and your own store. Spot trending issues before they escalate into returns.</div>
+        </div>
+        <div class="hp-audience-card">
+          <div class="hp-audience-icon">📱</div>
+          <div class="hp-audience-title">Product Teams</div>
+          <div class="hp-audience-desc">Use aspect-based analysis to understand exactly which features customers love or hate — and prioritize your roadmap accordingly.</div>
+        </div>
+        <div class="hp-audience-card">
+          <div class="hp-audience-icon">🏪</div>
+          <div class="hp-audience-title">Local Businesses</div>
+          <div class="hp-audience-desc">Analyze Google and social reviews to understand your reputation in real time and respond to issues before they go viral.</div>
+        </div>
+        <div class="hp-audience-card">
+          <div class="hp-audience-icon">📊</div>
+          <div class="hp-audience-title">Marketing & CX Teams</div>
+          <div class="hp-audience-desc">Extract authentic customer language from reviews to power your campaigns and identify your biggest fans for testimonials.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA BANNER ═══ -->
+  <section class="hp-cta-section">
+    <div class="container">
+      <div class="hp-cta-inner reveal">
+        <div class="hp-orb" style="width:300px;height:300px;background:rgba(0,229,255,0.05);top:-100px;left:-50px;filter:blur(80px);position:absolute;border-radius:50%;"></div>
+        <div class="hp-orb" style="width:250px;height:250px;background:rgba(124,58,237,0.06);bottom:-80px;right:-30px;filter:blur(80px);position:absolute;border-radius:50%;"></div>
+        <div class="hp-section-label" style="margin-bottom:1rem;">Ready to Start?</div>
+        <h2 class="hp-cta-title">Stop Guessing. Start<br><span class="hp-gradient-text">Knowing Your Customers.</span></h2>
+        <p style="color:var(--muted);font-size:1rem;max-width:500px;margin:1rem auto 2rem;line-height:1.7;">ReviewSense turns unstructured customer feedback into structured intelligence — in real time, with zero setup required.</p>
+        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+          <button class="btn btn-primary" onclick="scrollToAnalyzer()" style="padding:1rem 2.5rem;font-size:1rem;">✨ Analyze Your First Review</button>
+          <button class="btn btn-ghost" onclick="showPage('dashboard')" style="padding:1rem 2rem;font-size:1rem;">📊 Explore the Dashboard</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- DASHBOARD PAGE -->
+<div class="page" id="page-dashboard">
+  <div class="container">
+    <div class="section-head reveal">Analytics Dashboard</div>
+    <div class="section-sub reveal">Visual insights from 1,247 customer reviews</div>
+
+    <!-- STATS -->
+    <div class="stats-row reveal">
+      <div class="stat-card">
+        <div class="stat-num" style="color:var(--text)">1,247</div>
+        <div class="stat-label">Total Reviews</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" style="color:var(--pos)">798</div>
+        <div class="stat-label">Positive</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" style="color:var(--neu)">262</div>
+        <div class="stat-label">Neutral</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" style="color:var(--neg)">187</div>
+        <div class="stat-label">Negative</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" style="color:var(--accent)">78%</div>
+        <div class="stat-label">Satisfaction Rate</div>
+      </div>
+    </div>
+
+    <!-- CHARTS -->
+    <div class="charts-grid reveal">
+      <div class="card">
+        <div class="card-title"><span class="card-icon">🥧</span> Sentiment Distribution</div>
+        <div class="chart-wrap"><canvas id="pie-chart"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="card-icon">📊</span> Reviews by Sentiment</div>
+        <div class="chart-wrap"><canvas id="bar-chart"></canvas></div>
+      </div>
+      <div class="card" style="grid-column:1/-1">
+        <div class="card-title"><span class="card-icon">📈</span> Sentiment Trend Over Time</div>
+        <div class="chart-wrap"><canvas id="line-chart"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="card-icon">🔤</span> Word Frequency</div>
+        <div class="chart-wrap"><canvas id="word-bar-chart"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="card-icon">☁️</span> Word Cloud</div>
+        <div class="word-cloud" id="word-cloud"></div>
+      </div>
+    </div>
+
+    <!-- TREND PREDICTION -->
+    <div class="card reveal" style="margin-bottom:1.5rem;">
+      <div class="card-title"><span class="card-icon">🔮</span> Sentiment Trend Prediction</div>
+      <div id="trend-rows"></div>
+    </div>
+
+    <!-- AI INSIGHTS + RECS -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;" class="reveal">
+      <div class="card">
+        <div class="card-title"><span class="card-icon">🤖</span> AI Business Insights</div>
+        <div id="ai-insights"></div>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="card-icon">💡</span> Recommendations</div>
+        <div id="recommendations"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BULK PAGE -->
+<div class="page" id="page-bulk">
+  <div class="container">
+    <div class="section-head reveal">Bulk Review Analysis</div>
+    <div class="section-sub reveal">Upload a CSV file to analyze thousands of reviews at once</div>
+
+    <div class="card reveal" style="margin-bottom:1.5rem;">
+      <div class="upload-area" id="upload-area" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event)">
+        <input type="file" id="csv-file" accept=".csv,.txt" style="display:none;" onchange="handleCSV(this)">
+        <span class="upload-icon" id="upload-icon">📂</span>
+        <div class="upload-title" id="upload-title">Drop your CSV file here</div>
+        <div class="upload-sub" id="upload-sub">or <span style="color:var(--accent);cursor:pointer;text-decoration:underline;" onclick="document.getElementById('csv-file').click()">click to browse</span> — supports .csv up to 50MB</div>
+        <div id="upload-progress" style="display:none;margin-top:1rem;width:100%;">
+          <div style="height:4px;background:var(--surface2);border-radius:4px;overflow:hidden;">
+            <div id="upload-bar" style="height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:4px;transition:width 0.4s ease;"></div>
+          </div>
+          <div id="upload-status" style="margin-top:0.5rem;font-size:0.82rem;color:var(--muted);text-align:center;"></div>
+        </div>
+      </div>
+      <div style="margin-top:1rem;display:flex;gap:1rem;flex-wrap:wrap;align-items:center;">
+        <button class="btn btn-primary" onclick="runDemoCSV()">▶ Run Demo Analysis</button>
+        <button class="btn btn-ghost" onclick="downloadSampleCSV()">⬇ Download Sample CSV</button>
+      </div>
+    </div>
+
+    <div id="bulk-results" style="display:none;">
+      <div class="stats-row reveal" id="bulk-stats"></div>
+      <div class="charts-grid reveal">
+        <div class="card">
+          <div class="card-title"><span class="card-icon">🥧</span> Bulk Sentiment Distribution</div>
+          <div class="chart-wrap"><canvas id="bulk-pie"></canvas></div>
+        </div>
+        <div class="card">
+          <div class="card-title"><span class="card-icon">📊</span> Category Breakdown</div>
+          <div class="chart-wrap"><canvas id="bulk-bar"></canvas></div>
+        </div>
+      </div>
+      <div class="card reveal">
+        <div class="card-title"><span class="card-icon">📋</span> Review Samples</div>
+        <div id="bulk-table"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VOICE PAGE -->
+<div class="page" id="page-voice">
+  <div class="container" style="max-width:700px;">
+    <div class="section-head reveal" style="text-align:center;">Voice Review Analyzer</div>
+    <div class="section-sub reveal" style="text-align:center;">Speak your review — we'll transcribe and analyze it instantly</div>
+
+    <div class="card reveal" style="text-align:center;">
+      <button class="voice-btn" id="voice-btn" onclick="toggleVoice()">🎤</button>
+      <div class="voice-status" id="voice-status">Click the microphone to start</div>
+      <div class="transcript-box" id="transcript-box"></div>
+      <div id="voice-analyze-btn" style="margin-top:1rem;display:none;">
+        <button class="btn btn-primary" onclick="analyzeVoiceTranscript()">✨ Analyze This Review</button>
+      </div>
+    </div>
+
+    <div id="voice-results" style="display:none;margin-top:1.5rem;"></div>
+  </div>
+</div>
+
+<!-- RECOMMENDATIONS PAGE -->
+<div class="page" id="page-recommendations">
+  <div class="container">
+    <div class="section-head reveal">💡 Recommendation Engine</div>
+    <div class="section-sub reveal">AI-generated action plans based on review patterns — prioritized for maximum business impact</div>
+
+    <!-- SCORE BANNER -->
+    <div class="card reveal" style="margin-bottom:1.5rem;background:linear-gradient(135deg,rgba(0,229,255,0.06),rgba(124,58,237,0.06));border-color:rgba(0,229,255,0.2);">
+      <div style="display:flex;align-items:center;gap:2rem;flex-wrap:wrap;">
+        <div style="text-align:center;min-width:100px;">
+          <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:3rem;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">78</div>
+          <div style="color:var(--muted);font-size:0.82rem;font-weight:500;text-transform:uppercase;letter-spacing:0.05em;">CX Score</div>
+        </div>
+        <div style="flex:1;min-width:200px;">
+          <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;margin-bottom:0.4rem;">Good — Room to Grow 🚀</div>
+          <div style="color:var(--muted);font-size:0.88rem;line-height:1.6;">Your customer experience score is above average. Implementing the recommendations below could push it to <strong style="color:var(--pos)">90+</strong> within 2 quarters.</div>
+        </div>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+          <div style="text-align:center;padding:0.75rem 1.25rem;background:rgba(244,63,94,0.1);border:1px solid rgba(244,63,94,0.2);border-radius:12px;">
+            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1.5rem;color:var(--neg);">3</div>
+            <div style="font-size:0.75rem;color:var(--muted);">Critical</div>
+          </div>
+          <div style="text-align:center;padding:0.75rem 1.25rem;background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.2);border-radius:12px;">
+            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1.5rem;color:var(--neu);">4</div>
+            <div style="font-size:0.75rem;color:var(--muted);">Medium</div>
+          </div>
+          <div style="text-align:center;padding:0.75rem 1.25rem;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2);border-radius:12px;">
+            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1.5rem;color:var(--pos);">3</div>
+            <div style="font-size:0.75rem;color:var(--muted);">Low</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FILTER TABS -->
+    <div class="tabs reveal" style="max-width:500px;margin-bottom:1.5rem;">
+      <button class="tab active" onclick="filterRecs(this,'all')">All (10)</button>
+      <button class="tab" onclick="filterRecs(this,'critical')">🔴 Critical</button>
+      <button class="tab" onclick="filterRecs(this,'medium')">🟡 Medium</button>
+      <button class="tab" onclick="filterRecs(this,'low')">🟢 Low</button>
+    </div>
+
+    <!-- REC CARDS -->
+    <div id="rec-list" class="reveal"></div>
+
+    <!-- IMPACT CHART -->
+    <div class="card reveal" style="margin-top:2rem;">
+      <div class="card-title"><span class="card-icon">📈</span> Projected Impact After Improvements</div>
+      <div class="chart-wrap"><canvas id="impact-chart"></canvas></div>
+    </div>
+
+    <!-- ROADMAP -->
+    <div class="card reveal" style="margin-top:1.5rem;">
+      <div class="card-title"><span class="card-icon">🗺️</span> Implementation Roadmap</div>
+      <div id="roadmap"></div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <strong style="font-family:'Syne',sans-serif;">ReviewSense</strong> — AI-Powered Customer Review Intelligence Platform<br>
+  <span style="margin-top:0.3rem;display:block;">Built for Hackathon Demo · Powered by NLP & Machine Learning</span>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
