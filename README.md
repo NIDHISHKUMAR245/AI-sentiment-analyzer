@@ -98,4 +98,5 @@ This project is licensed under the MIT License.
 ## 👤 Author
 
 Nidhish Kumar
+
 Email:nidhish781@gmail.com
