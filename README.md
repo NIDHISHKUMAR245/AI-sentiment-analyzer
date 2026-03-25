@@ -43,7 +43,7 @@ AI-Sentiment-Analyzer/
 Follow these steps to run the project locally:
 
 1️⃣ Clone the Repository
-git clone https://github.com/your-username/AI-Sentiment-Analyzer.git
+git clone https://github.com/NIDHISHKUMAR245/AI-Sentiment-Analyzer.git
 
 2️⃣ Navigate to Project Directory
 cd AI-Sentiment-Analyzer
@@ -80,21 +80,8 @@ Real-time sentiment tracking from social media APIs
 Deployment as a web application or REST API
 Interactive data visualization dashboard
 Multilingual sentiment analysis
-🤝 Contribution Guidelines
-
-Contributions are welcome and appreciated.
-To contribute:
-
-Fork the repository
-Create a new branch (feature/your-feature-name)
-Commit your changes
-Submit a Pull Request
-📜 License
-
-This project is licensed under the MIT License.
 
 ---
-
 ## 👤 Author
 
 Nidhish Kumar
